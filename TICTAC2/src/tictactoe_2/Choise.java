@@ -139,7 +139,7 @@ public class Choise extends javax.swing.JFrame {
         // TODO add your handling code here:
         ispressed=true;
         this.dispose();
-        new TicTacToe_2(user,opponent,match);//one for player
+        new TicTacToe_2(user,opponent,match,1);//one for player
         //choise.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
     }                                          
@@ -148,7 +148,7 @@ public class Choise extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
         
-        new TicTacToe_2(user,opponent,match);
+        new TicTacToe_2(user,opponent,match,2);
         //this.enable();
     }                                            
 

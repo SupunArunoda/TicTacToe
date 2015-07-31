@@ -55,7 +55,7 @@ private String downScoreString;
 
 private boolean enables[]=new boolean[9];
 private static int choise;//static for allow in main method
-public TicTacToe_2(int user,int opponent,int game){
+public TicTacToe_2(int user,int opponent,int game,int choise){
     
     upScoreString ="Your Score is       \n";
     downScoreString="Opponent Score is \n";
@@ -317,16 +317,19 @@ public void mousePressed(MouseEvent e) {
      
             userboard.callMinimax(0, 1);
             user= getBestPosition();
-           System.out.println(user);
-           
+           System.out.println("User number 1 :"+user);
+             if(user!=0){
+             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
+           userboard.placeAMove(userboard.returnBestMove(), 1);
+           userboard.displayBoard();
+          gameOver();   
+           }
            if(user==0){
               gameOver();
                return;
            }
-            lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
-           userboard.displayBoard();
-          gameOver();
+         
+           
     }       }
 @Override
 public void mouseReleased(MouseEvent e) {
@@ -345,17 +348,18 @@ public void mousePressed(MouseEvent e) {
          
             userboard.callMinimax(0, 1);
             user= getBestPosition();
-           System.out.println(user);
-           
+           System.out.println("User number 2 :"+user);
+           if(user!=0){
+             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
+           userboard.placeAMove(userboard.returnBestMove(), 1);
+           userboard.displayBoard();
+          gameOver();   
+           }
             if(user==0){
               gameOver();
                return;
            }
-              lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
-           userboard.displayBoard();
-          gameOver();
-          
+             
                 }}
 @Override
 public void mouseReleased(MouseEvent e) {
@@ -374,16 +378,18 @@ public void mousePressed(MouseEvent e) {
              
             userboard.callMinimax(0, 1);
             user= getBestPosition();
-           System.out.println(user);
-           
+           System.out.println("User number 3 :"+user);
+           if(user!=0){
+             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
+           userboard.placeAMove(userboard.returnBestMove(), 1);
+           userboard.displayBoard();
+          gameOver();   
+           }
             if(user==0){
               gameOver();
                return;
            }
-            lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
-           userboard.displayBoard();
-           gameOver();
+           
     }
                 }
 @Override
@@ -404,16 +410,18 @@ public void mousePressed(MouseEvent e) {
      
             userboard.callMinimax(0, 1);
             user= getBestPosition();
-           System.out.println(user);
-           
+           System.out.println("User number 4 :"+user);
+           if(user!=0){
+             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
+           userboard.placeAMove(userboard.returnBestMove(), 1);
+           userboard.displayBoard();
+          gameOver();   
+           }
             if(user==0){
               gameOver();
                return;
            }
-           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
-           userboard.displayBoard();
-          gameOver();      
+               
            
                 }}
 @Override
@@ -434,16 +442,18 @@ public void mousePressed(MouseEvent e) {
      
             userboard.callMinimax(0, 1);
             user= getBestPosition();
-           System.out.println(user);
-           
+           System.out.println("User number 5 :"+user);
+           if(user!=0){
+             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
+           userboard.placeAMove(userboard.returnBestMove(), 1);
+           userboard.displayBoard();
+          gameOver();   
+           }
             if(user==0){
               gameOver();
                return;
            }
-           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
-           userboard.displayBoard();
-           gameOver();
+          
     }
                 }
 @Override
@@ -464,16 +474,18 @@ public void mousePressed(MouseEvent e) {
       
             userboard.callMinimax(0, 1);
             user= getBestPosition();
-           System.out.println(user);
-           
+           System.out.println("User number 6: "+user);
+           if(user!=0){
+             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
+           userboard.placeAMove(userboard.returnBestMove(), 1);
+           userboard.displayBoard();
+          gameOver();   
+           }
             if(user==0){
               gameOver();
                return;
            }
-           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
-           userboard.displayBoard();
-            gameOver();
+          
     }}
 @Override
 public void mouseReleased(MouseEvent e) {
@@ -498,16 +510,18 @@ public void mousePressed(MouseEvent e) {
              userboard.displayBoard();
             userboard.callMinimax(0, 1);
             user= getBestPosition();
-           System.out.println(user);
-           
+           System.out.println("User number 7 :"+user);
+           if(user!=0){
+             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
+           userboard.placeAMove(userboard.returnBestMove(), 1);
+           userboard.displayBoard();
+          gameOver();   
+           }
             if(user==0){
               gameOver();
                return;
            }
-           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
-           userboard.displayBoard();
-           gameOver();
+          
     }
                 }
 @Override
@@ -527,16 +541,18 @@ public void mousePressed(MouseEvent e) {
        userboard.displayBoard();
             userboard.callMinimax(0, 1);
             user= getBestPosition();
-           System.out.println(user);  
-           
+           System.out.println("User number 8 :"+user);
+           if(user!=0){
+             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
+           userboard.placeAMove(userboard.returnBestMove(), 1);
+           userboard.displayBoard();
+          gameOver();   
+           }
             if(user==0){
               gameOver();
                return;
            }
-           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
-           userboard.displayBoard();
-            gameOver();
+          
                 }}
 @Override
 public void mouseReleased(MouseEvent e) {
@@ -556,16 +572,19 @@ public void mousePressed(MouseEvent e) {
       
             userboard.callMinimax(0, 1);
             user= getBestPosition();
-           System.out.println(user);
+           System.out.println("User number 9 :"+user);
            userboard.displayBoard();
+           if(user!=0){
+             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
+           userboard.placeAMove(userboard.returnBestMove(), 1);
+           userboard.displayBoard();
+          gameOver();   
+           }
             if(user==0){
               gameOver();
                return;
            }
-           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
-           userboard.displayBoard();
-           gameOver();
+          
     }
                 }
 @Override

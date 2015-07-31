@@ -35,7 +35,6 @@ static Main_Menu main_Menu=new Main_Menu();
         multiplayerButton = new javax.swing.JButton();
         quitButton = new javax.swing.JButton();
         newgameButton = new javax.swing.JButton();
-        highscorebutton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,10 +85,7 @@ static Main_Menu main_Menu=new Main_Menu();
                         .addGap(107, 107, 107)
                         .addComponent(multiplayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(highscorebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
+                        .addGap(158, 158, 158)
                         .addComponent(quitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
@@ -102,11 +98,9 @@ static Main_Menu main_Menu=new Main_Menu();
                 .addComponent(newgameButton, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addGap(20, 20, 20)
                 .addComponent(multiplayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(highscorebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(quitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -185,7 +179,6 @@ static Main_Menu main_Menu=new Main_Menu();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton highscorebutton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton multiplayerButton;
     private javax.swing.JButton newgameButton;
