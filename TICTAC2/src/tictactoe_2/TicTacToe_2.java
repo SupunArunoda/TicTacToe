@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -23,7 +24,7 @@ import javax.xml.transform.Source;
 
 
 public class TicTacToe_2 extends JFrame {
-
+private int numberOfGames;
 private ImagePanel board;
 private ImagePanel redX;
 private ImagePanel blueX;
@@ -36,8 +37,8 @@ private int cellCount=0;
 //private final int WIDTH = 660;
 //private final int HEIGHT = 527;
 Dimension buttonDimension =new Dimension(150,50);
-private JPanel panel_1,panel_2,panel_3,panel_4,panel_5,panel_6,panel_7,panel_8,panel_9,detail_panel;
-private JLabel lable_1,lable_2,lable_3,lable_4,lable_5,lable_6,lable_7,lable_8,lable_9;
+private JPanel panel_1,panel_2,panel_3,panel_4,panel_5,panel_6,panel_7,panel_8,panel_9,detail_panel,upscore,downscore;
+private JLabel lable_1,lable_2,lable_3,lable_4,lable_5,lable_6,lable_7,lable_8,lable_9,yourScore1,yourScore2,opScore1,opScore2;
 private JLabel lableArray[]=new JLabel[9];
 private Point userpoint;
 private Point computerpoint;
@@ -45,16 +46,25 @@ private  Board userboard;
 private int user=0;
 private int userScore;
 private int opponentScore;
-
+private int k1;
+private int k2;
 private String redCirclepath="src/res/redCircle.png";
 private String bluCrosspath="src/res/blueX.png";
+private String upScoreString ;
+private String downScoreString;
 
 private boolean enables[]=new boolean[9];
 private static int choise;//static for allow in main method
-public TicTacToe_2(int user,int opponent){
-    
+public TicTacToe_2(int user,int opponent,int game){
+    upScoreString ="Your Score is       \n";
+    downScoreString="Opponent Score is \n";
     this.userScore=user;
     this.opponentScore=opponent;
+    this.numberOfGames=game;
+    k1=((numberOfGames)-(userScore+opponentScore))+(2*userScore);
+    k2=((numberOfGames)-(userScore+opponentScore))+(2*opponentScore);
+    System.out.println(k1+"   "+k2); 
+    
     board=new ImagePanel(new ImageIcon("src/res/board.png").getImage());
    
     userboard=new Board();
@@ -68,6 +78,10 @@ panel_7=new JPanel(new FlowLayout());
 panel_8=new JPanel(new FlowLayout());
 panel_9=new JPanel(new FlowLayout());
 detail_panel=new JPanel(new FlowLayout());
+upscore=new JPanel(new FlowLayout());
+downscore=new JPanel(new FlowLayout());
+
+
 
 endButton=new JButton();
 clearBoardButton=new JButton();
@@ -101,6 +115,25 @@ lable_7=new JLabel();
 lable_8=new JLabel();
 lable_9=new JLabel();
 
+yourScore1=new JLabel();
+opScore1=new JLabel();
+
+yourScore2=new JLabel();
+opScore2=new JLabel();
+
+
+yourScore1.setText(upScoreString);
+opScore1.setText(downScoreString);
+
+yourScore2.setText(String.valueOf(k1));
+opScore2.setText(String.valueOf(k2));
+
+yourScore1.setFont(new Font("Serif", Font.BOLD, 20));
+opScore1.setFont(new Font("Serif", Font.BOLD, 18));
+
+yourScore2.setFont(new Font("Serif", Font.BOLD, 40));
+opScore2.setFont(new Font("Serif", Font.BOLD,40));
+
  lableArray[0]=lable_1;lableArray[1]=lable_2;lableArray[2]=lable_3;
  lableArray[3]=lable_4;lableArray[4]=lable_5;lableArray[5]=lable_6;
  lableArray[6]=lable_7;lableArray[7]=lable_8;lableArray[8]=lable_9;
@@ -118,7 +151,9 @@ panel_6.setBounds(340, 170, 160, 160);
 panel_7.setBounds(0, 340, 160, 160);
 panel_8.setBounds(170, 340, 160, 160);
 panel_9.setBounds(340, 340, 160, 160);
-detail_panel.setBounds(530, 150, 150, 300);
+detail_panel.setBounds(530, 100, 150, 250);
+upscore.setBounds(530,0,150,150);
+downscore.setBounds(530,350,150,150);
 
 panel_1.add(lable_1);
 panel_2.add(lable_2);
@@ -135,6 +170,11 @@ detail_panel.add(saveButton);
 detail_panel.add(clearBoardButton);
 detail_panel.add(newGameButton);
 
+upscore.add(yourScore1);
+upscore.add(yourScore2);
+downscore.add(opScore1);
+downscore.add(opScore2);
+
 loadListners();
     frame = new JFrame();
 		frame.setTitle("Tic-Tac-Toe");
@@ -149,6 +189,8 @@ loadListners();
                 frame.add(panel_8);
                 frame.add(panel_9);
                 frame.add(detail_panel);
+                frame.add(upscore);
+                frame.add(downscore);
 		frame.getContentPane().add(board);
                   
                 
@@ -156,7 +198,7 @@ loadListners();
     //System.out.println("size"+frame.getSize());
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setLocation(400, 100);
-    frame.setResizable(false);
+    frame.setResizable(true);
     frame.setVisible(true);
     frame.setSize(700, 539);
     
@@ -228,6 +270,8 @@ public void loadListners(){
 
         
         public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            new TicTacToe_2(0,0,0);
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
         
@@ -239,7 +283,7 @@ public void loadListners(){
         
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            new TicTacToe_2(userScore,opponentScore);
+            new TicTacToe_2(userScore,opponentScore,numberOfGames);
         }
         
         
@@ -430,8 +474,14 @@ public void mousePressed(MouseEvent e) {
     }}
 @Override
 public void mouseReleased(MouseEvent e) {
-enables[5]=false;
-enables[user-1]=false;
+    try{
+        enables[5]=false;
+        enables[user-1]=false;
+    }
+    catch(ArrayIndexOutOfBoundsException ex){
+        JOptionPane.showMessageDialog(null,"Game is Over");
+    }
+
                 }
 });
       //panel 7
@@ -599,14 +649,34 @@ void makeChoises(int choise){
 void gameOver(){
      if (userboard.isGameOver()) {
                 if (userboard.hasXWon()) {
+                    opponentScore+=1;
+                    numberOfGames+=1;
+                    k1=((numberOfGames)-(userScore+opponentScore))+(2*userScore);
+                    k2=((numberOfGames)-(userScore+opponentScore))+(2*opponentScore);
+                    yourScore2.setText(String.valueOf(k1));
+                    opScore2.setText(String.valueOf(k2));
+                    
                     JOptionPane.showMessageDialog(null,"OOPS.... \n You have lost the game...");
             
         } 
                 else if (userboard.hasOWon()) {
+                    userScore+=1;
+                    numberOfGames+=1;
+                    k1=((numberOfGames)-(userScore+opponentScore))+(2*userScore);
+                    k2=((numberOfGames)-(userScore+opponentScore))+(2*opponentScore);
+                    yourScore2.setText(String.valueOf(k1));
+                    opScore2.setText(String.valueOf(k2));
                     JOptionPane.showMessageDialog(null, "Congratulations!!!!! \nYou have won the game...");//choise=JOptionPane.showConfirmDialog(null, "Congratulations!!!!! \nYou have won the game...\nDo You wish to play again?");
             
         } 
                 else {
+                    
+                    numberOfGames+=1;
+                    k1=((numberOfGames)-(userScore+opponentScore))+(2*userScore);
+                    k2=((numberOfGames)-(userScore+opponentScore))+(2*opponentScore);
+                    yourScore2.setText(String.valueOf(k1));
+                    opScore2.setText(String.valueOf(k2));
+                            
                     JOptionPane.showMessageDialog(null, "Game TIED");//choise=JOptionPane.showConfirmDialog(null, "Game TIED\nDo You wish to play again?");
             
         }

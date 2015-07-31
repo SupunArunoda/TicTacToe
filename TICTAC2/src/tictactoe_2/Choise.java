@@ -135,7 +135,7 @@ public class Choise extends javax.swing.JFrame {
         // TODO add your handling code here:
         ispressed=true;
         this.dispose();
-        new TicTacToe_2(0,0);//one for player
+        new TicTacToe_2(0,0,0);//one for player
         //choise.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
     }                                          
@@ -143,7 +143,7 @@ public class Choise extends javax.swing.JFrame {
     private void computerButtonActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
         this.dispose();
-        new TicTacToe_2(0,0);
+        new TicTacToe_2(0,0,0);
         //this.enable();
     }                                            
 
