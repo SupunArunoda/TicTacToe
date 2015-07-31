@@ -7,10 +7,6 @@ package tictactoe_2;
 
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Supun
- */
 public class Choise extends javax.swing.JFrame {
 
     /**
@@ -138,15 +134,18 @@ public class Choise extends javax.swing.JFrame {
     private void userButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         ispressed=true;
-        new TicTacToe_2(1);//one for player
+        this.dispose();
+        new TicTacToe_2(0,0);//one for player
         //choise.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
     }                                          
 
     private void computerButtonActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
-        new TicTacToe_2(2);
-    }                                              
+        this.dispose();
+        new TicTacToe_2(0,0);
+        //this.enable();
+    }                                            
 
     /**
      * @param args the command line arguments

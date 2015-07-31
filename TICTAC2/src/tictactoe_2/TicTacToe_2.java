@@ -1,14 +1,25 @@
 package tictactoe_2;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.xml.transform.Source;
 
 
 public class TicTacToe_2 extends JFrame {
@@ -19,26 +30,31 @@ private ImagePanel blueX;
 private ImagePanel redO;
 private ImagePanel blueO;
 private JFrame frame;
+private JButton endButton,newGameButton,clearBoardButton,saveButton;
 private int cellCount=0;
 
-private final int WIDTH = 506;
-private final int HEIGHT = 527;
-private JPanel panel_1,panel_2,panel_3,panel_4,panel_5,panel_6,panel_7,panel_8,panel_9;
+//private final int WIDTH = 660;
+//private final int HEIGHT = 527;
+Dimension buttonDimension =new Dimension(150,50);
+private JPanel panel_1,panel_2,panel_3,panel_4,panel_5,panel_6,panel_7,panel_8,panel_9,detail_panel;
 private JLabel lable_1,lable_2,lable_3,lable_4,lable_5,lable_6,lable_7,lable_8,lable_9;
 private JLabel lableArray[]=new JLabel[9];
 private Point userpoint;
 private Point computerpoint;
 private  Board userboard;
 private int user=0;
+private int userScore;
+private int opponentScore;
 
 private String redCirclepath="src/res/redCircle.png";
 private String bluCrosspath="src/res/blueX.png";
 
 private boolean enables[]=new boolean[9];
 private static int choise;//static for allow in main method
-public TicTacToe_2(int choise){
+public TicTacToe_2(int user,int opponent){
     
-    
+    this.userScore=user;
+    this.opponentScore=opponent;
     board=new ImagePanel(new ImageIcon("src/res/board.png").getImage());
    
     userboard=new Board();
@@ -51,6 +67,29 @@ panel_6=new JPanel(new FlowLayout());
 panel_7=new JPanel(new FlowLayout());
 panel_8=new JPanel(new FlowLayout());
 panel_9=new JPanel(new FlowLayout());
+detail_panel=new JPanel(new FlowLayout());
+
+endButton=new JButton();
+clearBoardButton=new JButton();
+newGameButton=new JButton();
+saveButton=new JButton();
+
+
+endButton.setText("END GAME");
+clearBoardButton.setText("CLEAR BOARD");
+newGameButton.setText("NEW GAME");
+saveButton.setText("SAVE GAME");
+
+endButton.setPreferredSize(buttonDimension);
+newGameButton.setPreferredSize(buttonDimension);
+clearBoardButton.setPreferredSize(buttonDimension);
+saveButton.setPreferredSize(buttonDimension);
+
+
+//newGameButton.setMargin(new Insets(100,0,100,0));
+//endButton.setMargin(new Insets(100,0,100,0));
+
+
 
 lable_1=new JLabel();
 lable_2=new JLabel();
@@ -79,6 +118,7 @@ panel_6.setBounds(340, 170, 160, 160);
 panel_7.setBounds(0, 340, 160, 160);
 panel_8.setBounds(170, 340, 160, 160);
 panel_9.setBounds(340, 340, 160, 160);
+detail_panel.setBounds(530, 150, 150, 300);
 
 panel_1.add(lable_1);
 panel_2.add(lable_2);
@@ -89,6 +129,12 @@ panel_6.add(lable_6);
 panel_7.add(lable_7);
 panel_8.add(lable_8);
 panel_9.add(lable_9);
+
+detail_panel.add(endButton);
+detail_panel.add(saveButton);
+detail_panel.add(clearBoardButton);
+detail_panel.add(newGameButton);
+
 loadListners();
     frame = new JFrame();
 		frame.setTitle("Tic-Tac-Toe");
@@ -102,14 +148,18 @@ loadListners();
                 frame.add(panel_7);
                 frame.add(panel_8);
                 frame.add(panel_9);
+                frame.add(detail_panel);
 		frame.getContentPane().add(board);
                   
                 
     frame.pack();
+    //System.out.println("size"+frame.getSize());
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setLocation(400, 100);
     frame.setResizable(false);
     frame.setVisible(true);
+    frame.setSize(700, 539);
+    
     if(choise==2){
         AIStart();
     }
@@ -164,6 +214,49 @@ public void AIStart(){
     
 }
 public void loadListners(){
+    saveButton.addActionListener(new ActionListener(){
+
+        
+        public void actionPerformed(ActionEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
+        
+        
+    });
+    clearBoardButton.addActionListener(new ActionListener(){
+
+        
+        public void actionPerformed(ActionEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
+        
+        
+    });
+    newGameButton.addActionListener(new ActionListener(){
+
+        
+        public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            new TicTacToe_2(userScore,opponentScore);
+        }
+        
+        
+        
+    });
+    endButton.addActionListener(new ActionListener(){
+
+        
+        public void actionPerformed(ActionEvent e) {
+            
+            frame.dispose();
+        }
+        
+        
+        
+    });
+    
     //panel 1
     
    panel_1.addMouseListener(new MouseAdapter() {
@@ -433,6 +526,7 @@ enables[user-1]=false;
         TicTacToe_2 ticTacToe_2=new TicTacToe_2();
         
     }*/
+
     
  int getBestPosition(){
      for (PointsAndScores pas : userboard.rootsChildrenScores) {
@@ -505,14 +599,16 @@ void makeChoises(int choise){
 void gameOver(){
      if (userboard.isGameOver()) {
                 if (userboard.hasXWon()) {
-            choise=JOptionPane.showConfirmDialog(null, "OOPS.... \n You have lost the game...\nDo You wish to play again?");
-            makeChoises(choise);
-        } else if (userboard.hasOWon()) {
-            choise=JOptionPane.showConfirmDialog(null, "Congratulations!!!!! \nYou have won the game...\nDo You wish to play again?");//choise=JOptionPane.showConfirmDialog(null, "Congratulations!!!!! \nYou have won the game...\nDo You wish to play again?");
-            makeChoises(choise);
-        } else {
-            choise=JOptionPane.showConfirmDialog(null, "Game TIED\nDo You wish to play again?");//choise=JOptionPane.showConfirmDialog(null, "Game TIED\nDo You wish to play again?");
-           makeChoises(choise); 
+                    JOptionPane.showMessageDialog(null,"OOPS.... \n You have lost the game...");
+            
+        } 
+                else if (userboard.hasOWon()) {
+                    JOptionPane.showMessageDialog(null, "Congratulations!!!!! \nYou have won the game...");//choise=JOptionPane.showConfirmDialog(null, "Congratulations!!!!! \nYou have won the game...\nDo You wish to play again?");
+            
+        } 
+                else {
+                    JOptionPane.showMessageDialog(null, "Game TIED");//choise=JOptionPane.showConfirmDialog(null, "Game TIED\nDo You wish to play again?");
+            
         }
                 return;
             } 
