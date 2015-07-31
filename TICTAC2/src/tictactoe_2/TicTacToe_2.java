@@ -56,6 +56,7 @@ private String downScoreString;
 private boolean enables[]=new boolean[9];
 private static int choise;//static for allow in main method
 public TicTacToe_2(int user,int opponent,int game){
+    
     upScoreString ="Your Score is       \n";
     downScoreString="Opponent Score is \n";
     this.userScore=user;
@@ -271,8 +272,9 @@ public void loadListners(){
         
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            new TicTacToe_2(0,0,0);
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            Choise choise= new Choise(0,0,0);
+            choise.setVisible(true);
+            
         }
         
         
@@ -283,7 +285,8 @@ public void loadListners(){
         
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            new TicTacToe_2(userScore,opponentScore,numberOfGames);
+            Choise choise=new Choise(userScore,opponentScore,numberOfGames);
+            choise.setVisible(true);
         }
         
         

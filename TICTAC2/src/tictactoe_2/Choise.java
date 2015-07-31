@@ -9,12 +9,16 @@ import javax.swing.ImageIcon;
 
 public class Choise extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Choise
-     */
+ 
     static boolean ispressed=false;
-    public Choise() {
+    private int user;
+    private int opponent;
+    private int match;
+    public Choise(int user,int opponent,int match) {
         initComponents();
+        this.match=match;
+        this.user=user;
+        this.opponent=opponent;
         choisetopic1.setIcon(new ImageIcon("src/res/choise1.png"));
         computerButton.setIcon(new ImageIcon("src/res/computer.png"));
         userButton.setIcon(new ImageIcon("src/res/user1.png"));
@@ -135,7 +139,7 @@ public class Choise extends javax.swing.JFrame {
         // TODO add your handling code here:
         ispressed=true;
         this.dispose();
-        new TicTacToe_2(0,0,0);//one for player
+        new TicTacToe_2(user,opponent,match);//one for player
         //choise.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
     }                                          
@@ -143,7 +147,8 @@ public class Choise extends javax.swing.JFrame {
     private void computerButtonActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
         this.dispose();
-        new TicTacToe_2(0,0,0);
+        
+        new TicTacToe_2(user,opponent,match);
         //this.enable();
     }                                            
 

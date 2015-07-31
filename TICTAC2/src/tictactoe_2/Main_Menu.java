@@ -128,7 +128,7 @@ static Main_Menu main_Menu=new Main_Menu();
 
     private void newgameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newgameButtonActionPerformed
         // TODO add your handling code here:
-        Choise choise=new Choise();
+        Choise choise=new Choise(0,0,0);
         choise.setVisible(true);
         main_Menu.setVisible(false);
         System.out.println(choise.ispressed);
