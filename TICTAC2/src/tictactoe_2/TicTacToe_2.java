@@ -54,12 +54,14 @@ private String bluCrosspath="src/res/blueX.png";
 private String upScoreString ;
 private String downScoreString;
 
+private int clickedbutton;
 private boolean enables[]=new boolean[9];
 private static int choise;//static for allow in main method
+private String mode;
 public TicTacToe_2(int user,int opponent,int game,int choise){
     
     
-    
+    //mode="EASY";
     upScoreString ="Your Score is       \n";
     downScoreString="Opponent Score is \n";
     this.userScore=user;
@@ -103,9 +105,6 @@ newGameButton.setPreferredSize(buttonDimension);
 clearBoardButton.setPreferredSize(buttonDimension);
 saveButton.setPreferredSize(buttonDimension);
 
-
-//newGameButton.setMargin(new Insets(100,0,100,0));
-//endButton.setMargin(new Insets(100,0,100,0));
 
 
 
@@ -199,10 +198,9 @@ loadListners();
                   
                 
     frame.pack();
-    //System.out.println("size"+frame.getSize());
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setLocation(400, 100);
-    frame.setResizable(true);
+    frame.setResizable(false);
     frame.setVisible(true);
     frame.setSize(700, 539);
     
@@ -251,13 +249,10 @@ public void AIStart(){
         }
     }
     userpoint=new Point(x, y);
-     userboard.placeAMove(userpoint, 1); //2 for O and O is the user
+     userboard.placeAMove(userpoint, 1); //2 for user 1 is the opponent
             
      userboard.displayBoard();
-           /* userboard.callMinimax(0, 1);
-            user= getBestPosition();
-           System.out.println(user);*/
-    
+         
 }
 public void loadListners(){
     saveButton.addActionListener(new ActionListener(){
@@ -287,9 +282,7 @@ public void loadListners(){
             choise.setVisible(true);
             
         }
-        
-        
-        
+
     });
     newGameButton.addActionListener(new ActionListener(){
 
@@ -312,8 +305,6 @@ public void loadListners(){
            
         }
         
-        
-        
     });
     
     //panel 1
@@ -322,25 +313,24 @@ public void loadListners(){
 @Override
 public void mousePressed(MouseEvent e) {
     if(enables[0]==true){
+        clickedbutton=1;
+        try{
     lable_1.setIcon(new ImageIcon(redCirclepath));
     userpoint=new Point(0, 0);
-     userboard.placeAMove(userpoint, 2); //2 for O and O is the user
+     userboard.placeAMove(userpoint, 2); //2 for user 1 is the opponent
             
-     
             userboard.callMinimax(0, 1);
-            user= getBestPosition();
-           System.out.println("User number 1 :"+user);
-             if(user!=0){
-             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
+           
+             userboard.placeAMove(userboard.returnBestMove(), 1);
+           user= getBestPosition();
+           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
-           }
-           if(user==0){
-              gameOver();
-               return;
-           }
-         
+           
+           
+        }catch(Exception ex){
+            tiedGame();
+        }  
            
     }       }
 @Override
@@ -354,23 +344,21 @@ enables[user-1]=false;
 @Override
 public void mousePressed(MouseEvent e) {
     if(enables[1]==true){
+        clickedbutton=2;
+        try{
     lable_2.setIcon(new ImageIcon(redCirclepath));
     userpoint=new Point(0, 1);
      userboard.placeAMove(userpoint, 2); //2 for O and 1 is the user
          
             userboard.callMinimax(0, 1);
-            user= getBestPosition();
-           System.out.println("User number 2 :"+user);
-           if(user!=0){
-             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
+          
+            userboard.placeAMove(userboard.returnBestMove(), 1);
+           user= getBestPosition();
+           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
-           }
-            if(user==0){
-              gameOver();
-               return;
-           }
+          
+             }catch(Exception ex){tiedGame();}
              
                 }}
 @Override
@@ -384,23 +372,21 @@ enables[user-1]=false;
 @Override
 public void mousePressed(MouseEvent e) {
     if(enables[2]==true){
+        clickedbutton=3;
+        try{
   lable_3.setIcon(new ImageIcon(redCirclepath));
     userpoint=new Point(0, 2);
-     userboard.placeAMove(userpoint, 2); //2 for O and O is the user
+     userboard.placeAMove(userpoint, 2); //2 for user 1 is the opponent
              
             userboard.callMinimax(0, 1);
-            user= getBestPosition();
-           System.out.println("User number 3 :"+user);
-           if(user!=0){
-             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
+           
+             userboard.placeAMove(userboard.returnBestMove(), 1);
+           user= getBestPosition();
+           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
-           }
-            if(user==0){
-              gameOver();
-               return;
-           }
+          
+            }catch(Exception ex){tiedGame();}
            
     }
                 }
@@ -415,24 +401,20 @@ enables[user-1]=false;
 @Override
 public void mousePressed(MouseEvent e) {
     if(enables[3]==true){
+        clickedbutton=4;
+        try{
  lable_4.setIcon(new ImageIcon(redCirclepath));
     userpoint=new Point(1, 0);
-     userboard.placeAMove(userpoint, 2); //2 for O and O is the user
-            
-     
+     userboard.placeAMove(userpoint, 2); //2 for user 1 is the opponent
             userboard.callMinimax(0, 1);
-            user= getBestPosition();
-           System.out.println("User number 4 :"+user);
-           if(user!=0){
-             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
+          
+             userboard.placeAMove(userboard.returnBestMove(), 1);
+           user= getBestPosition();
+           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
-           }
-            if(user==0){
-              gameOver();
-               return;
-           }
+         
+            }catch(Exception ex){tiedGame();}
                
            
                 }}
@@ -447,24 +429,21 @@ enables[user-1]=false;
 @Override
 public void mousePressed(MouseEvent e) {
     if(enables[4]==true){
+        clickedbutton=5;
+        try{
  lable_5.setIcon(new ImageIcon(redCirclepath));
     userpoint=new Point(1, 1);
-     userboard.placeAMove(userpoint, 2); //2 for O and O is the user
+     userboard.placeAMove(userpoint, 2); //2 for user 1 is the opponent
             
-     
             userboard.callMinimax(0, 1);
-            user= getBestPosition();
-           System.out.println("User number 5 :"+user);
-           if(user!=0){
-             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
+           
+            userboard.placeAMove(userboard.returnBestMove(), 1);
+           user= getBestPosition();
+           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
-           }
-            if(user==0){
-              gameOver();
-               return;
-           }
+       
+            }catch(Exception ex){tiedGame();}
           
     }
                 }
@@ -479,35 +458,27 @@ enables[user-1]=false;
 @Override
 public void mousePressed(MouseEvent e) {
     if(enables[5]==true){
+        clickedbutton=6;
+        try{
  lable_6.setIcon(new ImageIcon(redCirclepath));
     userpoint=new Point(1, 2);
-     userboard.placeAMove(userpoint, 2); //2 for O and O is the user
-         
-      
+     userboard.placeAMove(userpoint, 2); //2 for user 1 is the opponent
             userboard.callMinimax(0, 1);
-            user= getBestPosition();
-           System.out.println("User number 6: "+user);
-           if(user!=0){
-             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
+            
+             userboard.placeAMove(userboard.returnBestMove(), 1);
+           user= getBestPosition();
+           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
-           }
-            if(user==0){
-              gameOver();
-               return;
-           }
+          
+           }catch(Exception ex){tiedGame();}
           
     }}
 @Override
 public void mouseReleased(MouseEvent e) {
-    try{
+    
         enables[5]=false;
         enables[user-1]=false;
-    }
-    catch(ArrayIndexOutOfBoundsException ex){
-        JOptionPane.showMessageDialog(null,"Game is Over");
-    }
 
                 }
 });
@@ -516,23 +487,21 @@ public void mouseReleased(MouseEvent e) {
 @Override
 public void mousePressed(MouseEvent e) {
     if(enables[6]==true){
+        clickedbutton=7;
+        try{
  lable_7.setIcon(new ImageIcon(redCirclepath));
     userpoint=new Point(2, 0);
-     userboard.placeAMove(userpoint, 2); //2 for O and O is the user
-             userboard.displayBoard();
+     userboard.placeAMove(userpoint, 2); //2 for user 1 is the opponent
+             
             userboard.callMinimax(0, 1);
-            user= getBestPosition();
-           System.out.println("User number 7 :"+user);
-           if(user!=0){
-             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
+           
+             userboard.placeAMove(userboard.returnBestMove(), 1);
+           user= getBestPosition();
+           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
-           }
-            if(user==0){
-              gameOver();
-               return;
-           }
+          
+            }catch(Exception ex){tiedGame();}
           
     }
                 }
@@ -547,23 +516,21 @@ enables[user-1]=false;
 @Override
 public void mousePressed(MouseEvent e) {
     if(enables[7]==true){
+        clickedbutton=8;
+        try{
  lable_8.setIcon(new ImageIcon(redCirclepath));
     userpoint=new Point(2, 1);
-     userboard.placeAMove(userpoint, 2); //2 for O and O is the user
-       userboard.displayBoard();
+     userboard.placeAMove(userpoint, 2); //2 for user 1 is the opponent
+      
             userboard.callMinimax(0, 1);
-            user= getBestPosition();
-           System.out.println("User number 8 :"+user);
-           if(user!=0){
-             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
-           userboard.placeAMove(userboard.returnBestMove(), 1);
+          
+            userboard.placeAMove(userboard.returnBestMove(), 1);
+           user= getBestPosition();
+           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
-           }
-            if(user==0){
-              gameOver();
-               return;
-           }
+          // }
+           }catch(Exception ex){tiedGame();}
           
                 }}
 @Override
@@ -577,26 +544,23 @@ enables[user-1]=false;
 @Override
 public void mousePressed(MouseEvent e) {
     if(enables[8]==true){
+        clickedbutton=9;
+        try{
      lable_9.setIcon(new ImageIcon(redCirclepath));
     userpoint=new Point(2, 2);
-     userboard.placeAMove(userpoint, 2); //2 for O and O is the user
+     userboard.placeAMove(userpoint, 2); //2 for user 1 is the opponent
             
       
             userboard.callMinimax(0, 1);
             user= getBestPosition();
-           System.out.println("User number 9 :"+user);
-           userboard.displayBoard();
-           if(user!=0){
-             lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
+          
            userboard.placeAMove(userboard.returnBestMove(), 1);
+           user= getBestPosition();
+           lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
-           }
-            if(user==0){
-              gameOver();
-               return;
-           }
-          
+           
+            }catch(Exception ex){tiedGame();}
     }
                 }
 @Override
@@ -606,12 +570,15 @@ enables[user-1]=false;
                 }
 });
 }
-   /* public static void main(String[] args) {
-        TicTacToe_2 ticTacToe_2=new TicTacToe_2();
-        
-    }*/
-
-    
+    void tiedGame(){
+        numberOfGames+=1;
+                    k1=((numberOfGames)-(userScore+opponentScore))+(2*userScore);
+                    k2=((numberOfGames)-(userScore+opponentScore))+(2*opponentScore);
+                    yourScore2.setText(String.valueOf(k1));
+                    opScore2.setText(String.valueOf(k2));
+                            
+                    JOptionPane.showMessageDialog(null, "Game TIED");//choise=JOptionPane.showConfirmDialog(null, "Game TIED\nDo You wish to play again?");
+    }
  int getBestPosition(){
      for (PointsAndScores pas : userboard.rootsChildrenScores) {
                 if(pas.score==1){
@@ -671,15 +638,7 @@ enables[user-1]=false;
             }
      return 0;
 }
-void makeChoises(int choise){
-    if(choise==0){
-        frame.dispose();
-//        TicTacToe_2 tictac=new TicTacToe_2();
-    }else if(choise==1){
-        frame.dispose();
-    }
-    
-}
+
 void gameOver(){
      if (userboard.isGameOver()) {
                 if (userboard.hasXWon()) {

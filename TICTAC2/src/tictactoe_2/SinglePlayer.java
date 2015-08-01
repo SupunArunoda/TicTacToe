@@ -36,6 +36,7 @@ class Board {
     Scanner scan = new Scanner(System.in);
     int[][] board = new int[3][3];
 
+
     public Board() {
     }
 
@@ -112,6 +113,7 @@ class Board {
         Point point = new Point(x, y);
         placeAMove(point, 2); 
     }
+    
 
     public void displayBoard() {
         System.out.println();
