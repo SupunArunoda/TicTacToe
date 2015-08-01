@@ -106,14 +106,6 @@ class Board {
         return rootsChildrenScores.get(best).point;
     }
 
-    void takeHumanInput() {
-        System.out.println("Your move: ");
-        int x = scan.nextInt();
-        int y = scan.nextInt();
-        Point point = new Point(x, y);
-        placeAMove(point, 2); 
-    }
-    
 
     public void displayBoard() {
         System.out.println();

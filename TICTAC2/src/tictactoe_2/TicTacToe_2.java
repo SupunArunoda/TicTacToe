@@ -323,6 +323,7 @@ public void mousePressed(MouseEvent e) {
            
              userboard.placeAMove(userboard.returnBestMove(), 1);
            user= getBestPosition();
+            System.out.println("panel 1 "+user);
            lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
@@ -354,6 +355,7 @@ public void mousePressed(MouseEvent e) {
           
             userboard.placeAMove(userboard.returnBestMove(), 1);
            user= getBestPosition();
+           System.out.println("panel 2 "+user);
            lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
@@ -382,6 +384,7 @@ public void mousePressed(MouseEvent e) {
            
              userboard.placeAMove(userboard.returnBestMove(), 1);
            user= getBestPosition();
+           System.out.println("panel 3 "+user);
            lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
@@ -410,6 +413,7 @@ public void mousePressed(MouseEvent e) {
           
              userboard.placeAMove(userboard.returnBestMove(), 1);
            user= getBestPosition();
+           System.out.println("panel 4 "+user);
            lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
@@ -439,6 +443,7 @@ public void mousePressed(MouseEvent e) {
            
             userboard.placeAMove(userboard.returnBestMove(), 1);
            user= getBestPosition();
+           System.out.println("panel 5 "+user);
            lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
@@ -467,6 +472,7 @@ public void mousePressed(MouseEvent e) {
             
              userboard.placeAMove(userboard.returnBestMove(), 1);
            user= getBestPosition();
+           System.out.println("panel 6 "+user);
            lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
@@ -497,6 +503,7 @@ public void mousePressed(MouseEvent e) {
            
              userboard.placeAMove(userboard.returnBestMove(), 1);
            user= getBestPosition();
+           System.out.println("panel 7 "+user);
            lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
@@ -526,6 +533,7 @@ public void mousePressed(MouseEvent e) {
           
             userboard.placeAMove(userboard.returnBestMove(), 1);
            user= getBestPosition();
+           System.out.println("panel 8 "+user);
            lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
@@ -550,12 +558,11 @@ public void mousePressed(MouseEvent e) {
     userpoint=new Point(2, 2);
      userboard.placeAMove(userpoint, 2); //2 for user 1 is the opponent
             
-      
             userboard.callMinimax(0, 1);
-            user= getBestPosition();
           
            userboard.placeAMove(userboard.returnBestMove(), 1);
            user= getBestPosition();
+           System.out.println("panel 9 "+user);
            lableArray[user-1].setIcon(new ImageIcon(bluCrosspath));
            userboard.displayBoard();
           gameOver();   
