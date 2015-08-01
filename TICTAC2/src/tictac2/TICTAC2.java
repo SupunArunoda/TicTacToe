@@ -10,7 +10,7 @@ public class TICTAC2 {
         
         Random r=new Random();
         int x=r.nextInt(3);
-        System.out.println(x);
+        //Sytem.out.println(x);
     }
     
 }

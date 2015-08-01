@@ -37,6 +37,7 @@ private int cellCount=0;
 //private final int WIDTH = 660;
 //private final int HEIGHT = 527;
 Dimension buttonDimension =new Dimension(150,50);
+private saveDB db;
 private JPanel panel_1,panel_2,panel_3,panel_4,panel_5,panel_6,panel_7,panel_8,panel_9,detail_panel,upscore,downscore;
 private JLabel lable_1,lable_2,lable_3,lable_4,lable_5,lable_6,lable_7,lable_8,lable_9,yourScore1,yourScore2,opScore1,opScore2;
 private JLabel lableArray[]=new JLabel[9];
@@ -56,6 +57,8 @@ private String downScoreString;
 private boolean enables[]=new boolean[9];
 private static int choise;//static for allow in main method
 public TicTacToe_2(int user,int opponent,int game,int choise){
+    
+    
     
     upScoreString ="Your Score is       \n";
     downScoreString="Opponent Score is \n";
@@ -261,7 +264,13 @@ public void loadListners(){
 
         
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            db= new saveDB();
+            k1=((numberOfGames)-(userScore+opponentScore))+(2*userScore);
+            System.out.println(k1);
+            String name=JOptionPane.showInputDialog("Enter Your name");
+            db.saveData(name,k1);
+            
+            
         }
         
         
@@ -271,6 +280,8 @@ public void loadListners(){
 
         
         public void actionPerformed(ActionEvent e) {
+            db= new saveDB();
+            db.getData();
             frame.dispose();
             Choise choise= new Choise(0,0,0);
             choise.setVisible(true);
@@ -298,6 +309,7 @@ public void loadListners(){
         public void actionPerformed(ActionEvent e) {
             
             frame.dispose();
+           
         }
         
         
