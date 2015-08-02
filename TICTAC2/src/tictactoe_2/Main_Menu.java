@@ -12,9 +12,9 @@ public class Main_Menu extends javax.swing.JFrame {
     public Main_Menu() {
         initComponents();
         titleLable.setIcon(new ImageIcon(getClass().getResource("/maintitle.png")));
-        newgameButton.setIcon(new ImageIcon(getClass().getResource("/newGame1.png")));
-        multiplayerButton.setIcon(new ImageIcon(getClass().getResource("/multiplayer.png")));
-        quitButton.setIcon(new ImageIcon(getClass().getResource("/quit.png")));
+        //.setIcon(new ImageIcon(getClass().getResource("/newGame1.png")));
+        //multiplayerButton.setIcon(new ImageIcon(getClass().getResource("/multiplayer.png")));
+       // quitButton.setIcon(new ImageIcon(getClass().getResource("/quit.png")));
         setTitle("Tic Tac Toe Main Menu");
         setResizable(false);
         setLocation(400, 100);
