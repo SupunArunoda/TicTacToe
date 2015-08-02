@@ -6,7 +6,7 @@
 package tictactoe_2;
 
 import javax.swing.ImageIcon;
-import static tictactoe_2.Choise.ispressed;
+
 
 /**
  *

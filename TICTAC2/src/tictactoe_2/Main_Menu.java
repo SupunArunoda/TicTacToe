@@ -1,20 +1,37 @@
 
 package tictactoe_2;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 
 public class Main_Menu extends javax.swing.JFrame {
-
-
-
+private BufferedImage singleplayer;
+private BufferedImage twoplayer;
+private BufferedImage highscore;
+private BufferedImage quit;
+private BufferedImage title;
   
     public Main_Menu() {
         initComponents();
-        titleLable.setIcon(new ImageIcon(getClass().getResource("/maintitle.png")));
-        //newgameButton.setIcon(new ImageIcon(getClass().getResource("/newGame1.png")));
-        //multiplayerButton.setIcon(new ImageIcon(getClass().getResource("/multiplayer.png")));
-        //quitButton.setIcon(new ImageIcon(getClass().getResource("/quit.png")));
+    try {
+        title=ImageIO.read(getClass().getResourceAsStream("/maintitle.png"));
+        singleplayer=ImageIO.read(getClass().getResourceAsStream("/singleplayer.png"));
+        twoplayer=ImageIO.read(getClass().getResourceAsStream("/twoplayer.png"));
+        highscore=ImageIO.read(getClass().getResourceAsStream("/highscore1.png"));
+        quit=ImageIO.read(getClass().getResourceAsStream("/quit1.png"));
+    } catch (IOException ex) {
+        Logger.getLogger(Main_Menu.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        titleLable.setIcon(new ImageIcon(title));
+        newgameButton.setIcon(new ImageIcon(singleplayer));
+        multiplayerButton.setIcon(new ImageIcon(twoplayer));
+        highscorebutton.setIcon(new ImageIcon(highscore));
+        quitButton.setIcon(new ImageIcon(quit));
         setTitle("Tic Tac Toe Main Menu");
         setResizable(false);
         setLocation(400, 100);
@@ -35,7 +52,7 @@ public class Main_Menu extends javax.swing.JFrame {
         multiplayerButton = new javax.swing.JButton();
         quitButton = new javax.swing.JButton();
         newgameButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        highscorebutton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,9 +89,9 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
 
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        highscorebutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                highscorebuttonActionPerformed(evt);
             }
         });
 
@@ -90,7 +107,7 @@ public class Main_Menu extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                            .addComponent(highscorebutton, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                             .addComponent(newgameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(multiplayerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(quitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))))
@@ -106,7 +123,7 @@ public class Main_Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(multiplayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(highscorebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(quitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(63, Short.MAX_VALUE))
@@ -131,7 +148,7 @@ public class Main_Menu extends javax.swing.JFrame {
 
     private void newgameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newgameButtonActionPerformed
         // TODO add your handling code here:
-        Choise choise=new Choise(0,0,0);
+        Choise1 choise=new Choise1(0,0,0);
         choise.setVisible(true);
         this.setVisible(false);
         
@@ -159,6 +176,16 @@ public class Main_Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void highscorebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_highscorebuttonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        
+        
+        topScores ts = new topScores();
+        
+        ts.setVisible(true);
+    }//GEN-LAST:event_highscorebuttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,7 +208,7 @@ public class Main_Menu extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton highscorebutton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton multiplayerButton;
     private javax.swing.JButton newgameButton;
