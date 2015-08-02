@@ -5,6 +5,10 @@
  */
 package tictactoe_2;
 
+import java.awt.image.BufferedImage;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 
@@ -21,14 +25,26 @@ public class Choise1 extends javax.swing.JFrame {
     private int user;
     private int opponent;
     private int match;
+    private BufferedImage a;
+    private BufferedImage b;
+    private BufferedImage c;
     public Choise1(int user,int opponent,int match) {
+        try {
+            a=ImageIO.read(getClass().getResourceAsStream("/choise1.png"));
+            b=ImageIO.read(getClass().getResourceAsStream("/computer.png"));
+            c=ImageIO.read(getClass().getResourceAsStream("/user1.png"));
+          
+        
+    } catch (Exception ex) {
+        Logger.getLogger(Main_Menu.class.getName()).log(Level.SEVERE, null, ex);
+    }
         initComponents();
         this.match=match;
         this.user=user;
         this.opponent=opponent;
-        choisetopic1.setIcon(new ImageIcon("src/res/choise1.png"));
-        computerButton.setIcon(new ImageIcon("src/res/computer.png"));
-        userButton.setIcon(new ImageIcon("src/res/user1.png"));
+        choisetopic1.setIcon(new ImageIcon(a));
+        computerButton.setIcon(new ImageIcon(b));
+        userButton.setIcon(new ImageIcon(c));
         setLocation(400, 100);
         setResizable(false);
     }

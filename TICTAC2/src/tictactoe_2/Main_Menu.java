@@ -20,18 +20,21 @@ private BufferedImage title;
         initComponents();
     try {
         title=ImageIO.read(getClass().getResourceAsStream("/maintitle.png"));
-        singleplayer=ImageIO.read(getClass().getResourceAsStream("/singleplayer.png"));
-        twoplayer=ImageIO.read(getClass().getResourceAsStream("/twoplayer.png"));
-        highscore=ImageIO.read(getClass().getResourceAsStream("/highscore1.png"));
-        quit=ImageIO.read(getClass().getResourceAsStream("/quit1.png"));
-    } catch (IOException ex) {
+        singleplayer=ImageIO.read(getClass().getResourceAsStream("/singleplayer.PNG"));
+        twoplayer=ImageIO.read(getClass().getResourceAsStream("/twoplayer.PNG"));
+        highscore=ImageIO.read(getClass().getResourceAsStream("/highscore1.PNG"));
+        quit=ImageIO.read(getClass().getResourceAsStream("/quit1.PNG"));
+    } catch (Exception ex) {
         Logger.getLogger(Main_Menu.class.getName()).log(Level.SEVERE, null, ex);
     }
+        
+        
         titleLable.setIcon(new ImageIcon(title));
         newgameButton.setIcon(new ImageIcon(singleplayer));
         multiplayerButton.setIcon(new ImageIcon(twoplayer));
         highscorebutton.setIcon(new ImageIcon(highscore));
         quitButton.setIcon(new ImageIcon(quit));
+        
         setTitle("Tic Tac Toe Main Menu");
         setResizable(false);
         setLocation(400, 100);
