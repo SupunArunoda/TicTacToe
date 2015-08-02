@@ -281,7 +281,7 @@ public void loadListners(){
         
         public void actionPerformed(ActionEvent e) {
             db= new saveDB();
-            db.getData();
+            
             frame.dispose();
             Choise choise= new Choise(0,0,0);
             choise.setVisible(true);
@@ -309,6 +309,7 @@ public void loadListners(){
         public void actionPerformed(ActionEvent e) {
             
             frame.dispose();
+            System.exit(0);
            
         }
         
